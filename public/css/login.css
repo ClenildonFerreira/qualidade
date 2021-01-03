@@ -1,0 +1,45 @@
+body{
+	background-color: #ffff;
+	
+}
+
+form{
+    max-width: 700px;
+    margin: auto;
+    margin-top: 5px;
+  	
+}
+
+.img-login{
+	width: 230px;
+	border-radius: 30px;
+
+}
+
+.titulo-login{
+	color: #d44242;
+}
+
+.card-group > input{
+	border-radius: 20px;
+	margin: 0 auto;
+	text-align: center;
+
+}
+
+.card-group > select{
+	border-radius: 20px;
+	margin: 0 auto;
+	color: #747575;
+	text-align-last:center;
+}
+
+.card-group > button{
+	border-radius: 20px;
+	margin: 0 auto;
+	align-items: center;
+}
+
+.card-group > p{
+	margin: 0 auto;
+}
