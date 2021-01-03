@@ -216,33 +216,19 @@ $usuario = usuario::find($id_usuario);
 
 
 
-                    <form id="form-perfil" method="POST" action="">
+                    <form id="form-perfil" method="POST" action="{{route('admin.editar', $id_usuario)}}">
                     @csrf
                     @method('put');
                         <div class="modal-body">
-
-                           
                                     <div class="form-group">
                                         <label >Nome</label>
-                                        <input value="" type="text" class="form-control" id="nome" name="nome" placeholder="Nome">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label >CPF</label>
-                                        <input value="" type="text" class="form-control" id="cpf" name="cpf" placeholder="CPF">
+                                        <input value="{{$usuario->nome}}" type="text" class="form-control" id="nome" name="nome" placeholder="Nome" required>
                                     </div>
 
                                     <div class="form-group">
                                         <label >Email</label>
-                                        <input value="" type="text" class="form-control" id="usuario" name="usuario" placeholder="Email">
+                                        <input value="{{$usuario->usuario}}" type="email" class="form-control" id="email" name="email" placeholder="Email">
                                     </div>
-
-                                    <div class="form-group">
-                                        <label >Senha</label>
-                                        <input value="" type="text" class="form-control" id="text" name="senha" placeholder="Senha">
-                                    </div>
-                              
-
                         </div>
                         <div class="modal-footer">
 
@@ -250,8 +236,6 @@ $usuario = usuario::find($id_usuario);
                             <button type="submit" name="btn-salvar-perfil" id="btn-salvar-perfil" class="btn btn-primary">Salvar</button>
                         </div>
                     </form>
-
-
                 </div>
             </div>
         </div>
