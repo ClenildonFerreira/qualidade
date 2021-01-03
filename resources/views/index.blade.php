@@ -19,7 +19,8 @@
 	<body class="text-center" >
 		<div class="container-fluid">
 			<!--Formulario de Login -->
-			<form method="POST" action="#" autocomplete="off" id="formularioLogin">
+			<form method="POST" action="{{route('usuarios.login')}}" autocomplete="off" id="formularioLogin">
+			@csrf
 				<!-- Imagem top formulario -->
 				<div class="form-group">
 					<div class="col-md-6 offset-md-3">
@@ -46,7 +47,7 @@
 					<div class="card-group col-md-6 offset-md-3" >
 						<select class="form-control form-control-lg main" name="funcao" id="funcao" text-center required>
 							<option value="">Função</option>
-	  						<option value="Revisora">Revisor(a)</option>
+	  						<option value="revisora">Revisor(a)</option>
 	  						<option value="inspetora">Inspetor(a)</option>
                             <option value="admin">Administrador(a)</option>
                             <option value="gestao">Gestão de Pessoas</option>
