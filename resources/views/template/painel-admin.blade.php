@@ -222,12 +222,12 @@ $usuario = usuario::find($id_usuario);
                         <div class="modal-body">
                                     <div class="form-group">
                                         <label >Nome</label>
-                                        <input value="{{$usuario->nome}}" type="text" class="form-control" id="nome" name="nome" placeholder="Nome" required>
+                                        <input value="{{$usuario->nome}}" type="text" class="form-control" id="nome" name="nome" placeholder="Nome" maxlength="100"required>
                                     </div>
 
                                     <div class="form-group">
                                         <label >Email</label>
-                                        <input value="{{$usuario->usuario}}" type="email" class="form-control" id="email" name="email" placeholder="Email">
+                                        <input value="{{$usuario->usuario}}" type="email" class="form-control" id="email" name="email" placeholder="Email" maxlength="100">
                                     </div>
                         </div>
                         <div class="modal-footer">

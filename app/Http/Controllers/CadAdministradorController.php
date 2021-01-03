@@ -22,29 +22,30 @@ class CadAdministradorController extends Controller
         $tabela = new administradore();
         $tabela->nome = $request->nome;
         $tabela->matricula = $request->matricula;
-        $tabela->funcao = $request->função;
-        $tabela->nivel = $request->nivel;
+        $tabela->funcao = 'administrador';
+        $tabela->nivel = 'admin';
         $tabela->situacao = $request->situacao;
         $tabela->email = $request->email;
 
         $tabela2 = new usuario();
         $tabela2->nome = $request->nome;
         $tabela2->matricula = $request->matricula;
-        $tabela2->funcao = $request->função;
-        $tabela2->senha = '123';
-        $tabela2->nivel = 'instrutor';
+        $tabela2->funcao = 'administrador';
+        $tabela2->nivel = 'admin';
+        $tabela2->situacao = $request->situacao;
+        $tabela2->email = $request->email;
 
-        $itens = administradore::where('cpf', '=', $request->cpf)->orwhere('credencial', '=', $request->credencial)->orwhere('email', '=', $request->email)->count();
+        $itens = administradore::where('matricula', '=', $request->matricula)->orwhere('email', '=', $request->email)->count();
         if($itens > 0){
             echo "<script language='javascript'> window.alert('Registro já Cadastrado!') </script>";
-            return view('painel-admin.instrutores.create');
+            return view('painel-admin.administradores.create');
             
             
         }
 
         $tabela->save();
         $tabela2->save();
-        return redirect()->route('instrutores.index');
+        return redirect()->route('administradores.index');
 
     }
 }

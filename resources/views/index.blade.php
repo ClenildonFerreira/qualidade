@@ -37,7 +37,7 @@
 				<!-- campo matrícula do formulario login-->
 				<div class="form-group">
 					<div class="card-group  col-md-6 offset-md-3" >
-						<input class="form-control form-control-lg" type="text" name="matricula" placeholder="Matrícula" maxlength="10" id="matricula" required>
+						<input class="form-control form-control-lg" type="text" name="matricula" placeholder="Matrícula" maxlength="9" id="matricula" required>
 					</div>
 				</div>
 				<!-- fim campo matrícula -->
@@ -49,7 +49,7 @@
 							<option value="">Função</option>
 	  						<option value="revisora">Revisor(a)</option>
 	  						<option value="inspetora">Inspetor(a)</option>
-                            <option value="admin">Administrador(a)</option>
+                            <option value="administrador">Administrador(a)</option>
                             <option value="gestao">Gestão de Pessoas</option>
 						</select>
 					</div>

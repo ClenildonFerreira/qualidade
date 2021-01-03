@@ -14,7 +14,7 @@ if(!isset($id)){
 ?>
 
 
-<a href="" type="button" class="mt-4 mb-4 btn btn-primary">Inserir Administrador</a>
+<a href="{{route('administradores.inserir')}}" type="button" class="mt-4 mb-4 btn btn-primary">Inserir Administrador</a>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
@@ -39,10 +39,9 @@ if(!isset($id)){
        ?>
          <tr>
             <td>{{$item->nome}}</td>
-            <td>{{$item->email}}</td>
-            <td>{{$item->cpf}}</td>
-            <td>{{$item->telefone}}</td>
-            <td>{{$data}}</td>
+            <td>{{$item->matricula}}</td>
+            <td>{{$item->funcao}}</td>
+            <td>{{$item->situacao}}</td>
             <td>
             <a href=""><i class="fas fa-edit text-info mr-1"></i></a>
             <a href=""><i class="fas fa-trash text-danger mr-1"></i></a>
