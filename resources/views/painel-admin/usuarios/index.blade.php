@@ -1,5 +1,5 @@
 @extends('template.painel-admin')
-@section('title', 'Cadastro Administradores')
+@section('title', 'Lista de Usuarios')
 @section('content')
 <?php 
 @session_start();
@@ -14,7 +14,6 @@ if(!isset($id)){
 ?>
 
 
-<a href="{{route('administradores.inserir')}}" type="button" class="mt-4 mb-4 btn btn-primary">Inserir Administrador</a>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
@@ -26,25 +25,24 @@ if(!isset($id)){
         <tr>
           <th>Nome</th>
           <th>Matrícula</th>
-          <th>Função</th>
-          <th>Situação</th>
+          <th>Fução</th>
+          <th>Nível</th>
+          
           <th>Ações</th>
         </tr>
       </thead>
 
       <tbody>
       @foreach($itens as $item)
-      <?php 
-       $data = implode('/', array_reverse(explode('-', $item->data_venc)));
-       ?>
          <tr>
             <td>{{$item->nome}}</td>
             <td>{{$item->matricula}}</td>
             <td>{{$item->funcao}}</td>
-            <td>{{$item->situacao}}</td>
+            <td>{{$item->nivel}}</td>
+            
             <td>
-            <a href="{{route('administradores.edit', $item)}}"><i class="fas fa-edit text-info mr-1"></i></a>
-            <a href="{{route('administradores.modal', $item)}}"><i class="fas fa-trash text-danger mr-1"></i></a>
+          
+            <a href="{{route('usuarios.modal', $item)}}"><i class="fas fa-trash text-danger mr-1"></i></a>
             </td>
         </tr>
         @endforeach 
@@ -85,7 +83,7 @@ if(!isset($id)){
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <form method="POST" action="{{route('administradores.delete', $id)}}">
+        <form method="POST" action="{{route('usuarios.delete', $id)}}">
           @csrf
           @method('delete')
           <button type="submit" class="btn btn-danger">Excluir</button>
@@ -102,3 +100,5 @@ if(@$id != ""){
 ?>
 
 @endsection
+
+

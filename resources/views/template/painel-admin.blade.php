@@ -74,9 +74,9 @@ $usuario = usuario::find($id_usuario);
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <a class="collapse-item" href="{{route('administradores.index')}}">Administradores</a>
-                            <a class="collapse-item" href="">Revisora / Inspetora</a>
+                            <a class="collapse-item" href="{{route('revisoras.index')}}">Revisora / Inspetora</a>
                             <a class="collapse-item" href="">Gestão De Pessoas</a>
-                            <a class="collapse-item" href="">Usuários</a>
+                            <a class="collapse-item" href="{{route('usuarios.index')}}">Usuários</a>
                         </div>
                     </div>
                 </li>
@@ -90,8 +90,8 @@ $usuario = usuario::find($id_usuario);
                     <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             
-                            <a class="collapse-item" href="">Produção Diária</a>
-                            <a class="collapse-item" href="">Opção 2</a>
+                            <a class="collapse-item" href="{{route('qualidades.index')}}">Produção Diária</a>
+                            <a class="collapse-item" href="{{route('metas.index')}}">Metas</a>
                             
 
                         </div>
@@ -227,7 +227,7 @@ $usuario = usuario::find($id_usuario);
 
                                     <div class="form-group">
                                         <label >Email</label>
-                                        <input value="{{$usuario->usuario}}" type="email" class="form-control" id="email" name="email" placeholder="Email" maxlength="100">
+                                        <input value="{{$usuario->email}}" type="email" class="form-control" id="email" name="email" placeholder="Email" maxlength="100">
                                     </div>
                         </div>
                         <div class="modal-footer">

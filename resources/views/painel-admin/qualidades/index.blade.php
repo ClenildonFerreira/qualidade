@@ -1,7 +1,11 @@
 @extends('template.painel-admin')
-@section('title', 'Cadastro Administradores')
+@section('title', 'Produção Diária')
 @section('content')
-<?php 
+<?php
+
+use App\Models\instrutore;
+use App\Models\qualidade;
+
 @session_start();
 if(@$_SESSION['nivel_usuario'] != 'admin'){ 
   echo "<script language='javascript'> window.location='./' </script>";
@@ -14,7 +18,7 @@ if(!isset($id)){
 ?>
 
 
-<a href="{{route('administradores.inserir')}}" type="button" class="mt-4 mb-4 btn btn-primary">Inserir Administrador</a>
+<a href="{{route('qualidades.inserir')}}" type="button" class="mt-4 mb-4 btn btn-primary">Inserir Formulario de Produção Diária</a>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
@@ -24,10 +28,15 @@ if(!isset($id)){
     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
       <thead>
         <tr>
-          <th>Nome</th>
-          <th>Matrícula</th>
-          <th>Função</th>
-          <th>Situação</th>
+          <th>Referência</th>
+          <th>OC</th>
+          <th>Cor</th>
+          <th>OP</th>
+          <th>Quantidade</th>
+          <th>Tempo</th>
+          <th>Minutos</th>
+          <th>Data Cadastro</th>
+             
           <th>Ações</th>
         </tr>
       </thead>
@@ -35,16 +44,31 @@ if(!isset($id)){
       <tbody>
       @foreach($itens as $item)
       <?php 
-       $data = implode('/', array_reverse(explode('-', $item->data_venc)));
+       $data = implode('/', array_reverse(explode('-', $item->data_revisao)));
+       $instrutor = qualidade::where('id', '=', $item->instrutor)->first();
+       if($item->instrutor != '0'){
+        $instrutor = $instrutor->nome;
+       }else{
+        $instrutor = 'Nenhum inspertora';
+       }
+       
+        
        ?>
          <tr>
-            <td>{{$item->nome}}</td>
-            <td>{{$item->matricula}}</td>
-            <td>{{$item->funcao}}</td>
-            <td>{{$item->situacao}}</td>
+            <td>{{$item->referencia}}</td>
+            <td>{{$item->oc}}</td>
+            <td>{{$item->cor}}</td>
+            <td>{{$item->op}}</td>
+            <td>{{$item->quantidade}}</td>
+            
+            <td>{{$item->tempo}}</td>
+            <td>{{$item->minutos}}</td>
+            <td>{{$usuario}}</td>
+            <td>{{$data_cadastro}}</td>
+                      
             <td>
-            <a href="{{route('administradores.edit', $item)}}"><i class="fas fa-edit text-info mr-1"></i></a>
-            <a href="{{route('administradores.modal', $item)}}"><i class="fas fa-trash text-danger mr-1"></i></a>
+            <a href="{{route('qualidades.edit', $item)}}"><i class="fas fa-edit text-info mr-1"></i></a>
+            <a href="{{route('qualidades.modal', $item)}}"><i class="fas fa-trash text-danger mr-1"></i></a>
             </td>
         </tr>
         @endforeach 
@@ -85,7 +109,7 @@ if(!isset($id)){
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <form method="POST" action="{{route('administradores.delete', $id)}}">
+        <form method="POST" action="{{route('qualidades.delete', $id)}}">
           @csrf
           @method('delete')
           <button type="submit" class="btn btn-danger">Excluir</button>
@@ -102,3 +126,5 @@ if(@$id != ""){
 ?>
 
 @endsection
+
+

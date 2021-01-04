@@ -1,5 +1,5 @@
 @extends('template.painel-admin')
-@section('title', 'Cadastro Administradores')
+@section('title', 'Metas')
 @section('content')
 <?php 
 @session_start();
@@ -14,7 +14,7 @@ if(!isset($id)){
 ?>
 
 
-<a href="{{route('administradores.inserir')}}" type="button" class="mt-4 mb-4 btn btn-primary">Inserir Administrador</a>
+<a href="{{route('metas.inserir')}}" type="button" class="mt-4 mb-4 btn btn-primary">Inserir Meta</a>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
@@ -24,27 +24,23 @@ if(!isset($id)){
     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
       <thead>
         <tr>
-          <th>Nome</th>
-          <th>Matrícula</th>
-          <th>Função</th>
-          <th>Situação</th>
+          <th>Meta 1º Turno %</th>
+          <th>Meta 2º Turno %</th>
+          <th>Meta 3º Turno %</th>
           <th>Ações</th>
         </tr>
       </thead>
 
       <tbody>
       @foreach($itens as $item)
-      <?php 
-       $data = implode('/', array_reverse(explode('-', $item->data_venc)));
-       ?>
          <tr>
-            <td>{{$item->nome}}</td>
-            <td>{{$item->matricula}}</td>
-            <td>{{$item->funcao}}</td>
-            <td>{{$item->situacao}}</td>
+            <td>{{$item->turno_1}}</td>
+            <td>{{$item->turno_2}}</td>
+            <td>{{$item->turno_3}}</td>
+                      
             <td>
-            <a href="{{route('administradores.edit', $item)}}"><i class="fas fa-edit text-info mr-1"></i></a>
-            <a href="{{route('administradores.modal', $item)}}"><i class="fas fa-trash text-danger mr-1"></i></a>
+            <a href="{{route('metas.edit', $item)}}"><i class="fas fa-edit text-info mr-1"></i></a>
+            <a href="{{route('metas.modal', $item)}}"><i class="fas fa-trash text-danger mr-1"></i></a>
             </td>
         </tr>
         @endforeach 
@@ -85,7 +81,7 @@ if(!isset($id)){
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <form method="POST" action="{{route('administradores.delete', $id)}}">
+        <form method="POST" action="{{route('metas.delete', $id)}}">
           @csrf
           @method('delete')
           <button type="submit" class="btn btn-danger">Excluir</button>
@@ -102,3 +98,5 @@ if(@$id != ""){
 ?>
 
 @endsection
+
+

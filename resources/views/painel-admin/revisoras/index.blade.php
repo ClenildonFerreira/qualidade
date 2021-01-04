@@ -1,5 +1,5 @@
 @extends('template.painel-admin')
-@section('title', 'Cadastro Administradores')
+@section('title', 'Cadastro Revisoras')
 @section('content')
 <?php 
 @session_start();
@@ -14,7 +14,7 @@ if(!isset($id)){
 ?>
 
 
-<a href="{{route('administradores.inserir')}}" type="button" class="mt-4 mb-4 btn btn-primary">Inserir Administrador</a>
+<a href="{{route('revisoras.inserir')}}" type="button" class="mt-4 mb-4 btn btn-primary">Inserir Revisora</a>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
@@ -43,8 +43,8 @@ if(!isset($id)){
             <td>{{$item->funcao}}</td>
             <td>{{$item->situacao}}</td>
             <td>
-            <a href="{{route('administradores.edit', $item)}}"><i class="fas fa-edit text-info mr-1"></i></a>
-            <a href="{{route('administradores.modal', $item)}}"><i class="fas fa-trash text-danger mr-1"></i></a>
+            <a href="{{route('revisoras.edit', $item)}}"><i class="fas fa-edit text-info mr-1"></i></a>
+            <a href="{{route('revisoras.modal', $item)}}"><i class="fas fa-trash text-danger mr-1"></i></a>
             </td>
         </tr>
         @endforeach 
@@ -53,11 +53,6 @@ if(!isset($id)){
 </div>
 </div>
 </div>
-
-
-   
-
-
 </div>
 
 <script type="text/javascript">
@@ -85,7 +80,7 @@ if(!isset($id)){
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <form method="POST" action="{{route('administradores.delete', $id)}}">
+        <form method="POST" action="{{route('revisoras.delete', $id)}}">
           @csrf
           @method('delete')
           <button type="submit" class="btn btn-danger">Excluir</button>

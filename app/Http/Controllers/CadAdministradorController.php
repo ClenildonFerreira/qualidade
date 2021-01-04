@@ -36,7 +36,7 @@ class CadAdministradorController extends Controller
         $tabela2->email = $request->email;
 
         $itens = administradore::where('matricula', '=', $request->matricula)->orwhere('email', '=', $request->email)->count();
-        if($itens > 0){
+        if($itens > 0 ){
             echo "<script language='javascript'> window.alert('Registro já Cadastrado!') </script>";
             return view('painel-admin.administradores.create');
             
@@ -48,4 +48,57 @@ class CadAdministradorController extends Controller
         return redirect()->route('administradores.index');
 
     }
+
+    public function edit(administradore $item){
+        return view('painel-admin.administradores.edit', ['item' => $item]);   
+     }
+ 
+ 
+     public function editar(Request $request, administradore $item){
+         
+        $item->nome = $request->nome;
+        $item->matricula = $request->matricula;
+        $item->funcao = 'administrador';
+        $item->nivel = 'admin';
+        $item->situacao = $request->situacao;
+        $item->email = $request->email;
+       
+
+        $oldmatricula = $request->oldmatricula;
+        $oldemail = $request->oldemail;
+
+        if($oldmatricula != $request->matricula){
+            $itens = administradore::where('matricula', '=', $request->matricula)->count();
+            if($itens > 0){
+                echo "<script language='javascript'> window.alert('Matricula já Cadastrada!')</script>";
+                return view('painel-admin.administradores.edit', ['item' => $item]);   
+                
+            }
+        }
+
+        if($oldemail != $request->email){
+            $itens = administradore::where('email', '=', $request->email)->count();
+            if($itens > 0){
+                echo "<script language='javascript'> window.alert('Email já Cadastrado!') </script>";
+                return view('painel-admin.administradores.edit', ['item' => $item]);   
+                
+            }
+        }
+       
+
+        $item->save();
+         return redirect()->route('administradores.index');
+ 
+     }
+
+     public function delete(administradore $item){
+        $item->delete();
+        return redirect()->route('administradores.index');
+     }
+
+     public function modal($id){
+        $item = administradore::orderby('id', 'desc')->paginate();
+        return view('painel-admin.administradores.index', ['itens' => $item, 'id' => $id]);
+
+     }
 }

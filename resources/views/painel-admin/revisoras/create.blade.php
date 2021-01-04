@@ -1,8 +1,8 @@
 @extends('template.painel-admin')
-@section('title', 'Inserir Administradores')
+@section('title', 'Inserir Revisoras')
 @section('content')
-<h6 class="mb-4"><i>CADASTRO DE ADMINISTRADORES</i></h6><hr>
-<form method="POST" action="{{route('administradores.insert')}}">
+<h6 class="mb-4"><i>CADASTRO DE REVISORAS</i></h6><hr>
+<form method="POST" action="{{route('revisoras.insert')}}">
         @csrf
 
     <div class="row">
@@ -20,10 +20,20 @@
             </div>
     </div>
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-4">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email</label>
                     <input type="email" class="form-control" id="email" name="email" maxlength="100">
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Função</label>
+                    <select class="form-control" name="funcao" id="funcao" text-center required>
+                        <option value="revisora">Revisora</option>
+                        <option value="inspetora">Inspetora</option>
+                    </select>
                 </div>
             </div>
 
@@ -37,6 +47,8 @@
                 </div>
             </div>
         </div>
+    
+
 
     
         <p align="right">
